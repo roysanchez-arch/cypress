@@ -1,13 +1,15 @@
-name: API Usage Monitor
+name: Cypress Monitor API Usage
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: '*/1 * * * *'   # cada 5 minutos
   workflow_dispatch:
 
 jobs:
-  monitor:
+  cypress-monitor:
     runs-on: ubuntu-latest
+
+    environment: production   
 
     steps:
       - name: Checkout repo
@@ -21,5 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress monitor test
-        run: npx cypress run --spec "cypress/e2e/pago-callapi.cy.ts"
+      - name: Run Cypress
+        run: npx cypress run
+        env:
+          CYPRESS_USER_LOGIN: ${{ secrets.CYPRESS_USER_LOGIN }}
+          CYPRESS_PASS_LOGIN: ${{ secrets.CYPRESS_PASS_LOGIN }}
+          CYPRESS_SLACK_WEBHOOK_URL: ${{ secrets.CYPRESS_SLACK_WEBHOOK_URL }}
