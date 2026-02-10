@@ -46,13 +46,14 @@ describe('Pago - Call Apis', () => {
             `🚨 *ALERTA* 🚨\n` +
             `Total usage alcanzó *${value}%*\n`
           );
-        } else {
-          cy.log(`⚠️ Bajo: total_percentage = ${value}`);
-          notifySlack(
-            `🚨 *ALERTA* 🚨\n` +
-            `Total usage alcanzó *${value}%*\n`
-          );
         }
+        //  else {
+        //   cy.log(`⚠️ Bajo: total_percentage = ${value}`);
+        //   notifySlack(
+        //     `🚨 *ALERTA* 🚨\n` +
+        //     `Total usage alcanzó *${value}%*\n`
+        //   );
+        // }
       });
 
       
