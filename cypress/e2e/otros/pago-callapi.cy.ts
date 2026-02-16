@@ -1,4 +1,4 @@
-import { notifySlack } from '../support/utils/slack';
+import { notifySlack } from '../../support/utils/slack';
 
 describe('Pago - Call Apis', () => {
   it('Debe obtener el total_percentage del último ciclo', () => {
